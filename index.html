@@ -1,11 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Home - Chistes</title>
+<style>
+  body { font-family: Arial, sans-serif; margin:0; padding:0; }
+  nav {
+    background: #007bff; color: white; padding: 1rem; display: flex; justify-content: space-between; align-items: center;
+  }
+  nav .menu-btn {
+    display: none; font-size: 1.5rem; cursor: pointer;
+  }
+  nav ul {
+    list-style: none; margin:0; padding:0; display: flex; gap: 1rem;
+  }
+  nav ul li a {
+    color: white; text-decoration: none; font-weight: bold;
+  }
+  nav ul li a.active {
+    text-decoration: underline;
+  }
+  main {
+    padding: 2rem 1rem; max-width: 600px; margin: auto;
+    text-align: center;
+  }
+  #chiste-texto {
+    font-size: 1.3rem; min-height: 100px; margin-bottom: 1rem;
+  }
+  button {
+    padding: 0.5rem 1rem; font-size: 1rem; margin: 0 0.5rem; cursor: pointer;
+  }
+  @media(max-width:600px) {
+    nav ul {
+      display: none; flex-direction: column; background: #007bff; position: absolute; top: 50px; right: 0; width: 150px;
+    }
+    nav ul.show {
+      display: flex;
+    }
+    nav .menu-btn {
+      display: block;
+    }
+  }
+</style>
 </head>
 <body>
-    <h1>hola</h1>
+
+<nav>
+  <div>Chistes</div>
+  <div class="menu-btn" id="menu-btn">&#9776;</div>
+  <ul id="menu">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="acercaDe.html">Acerca De</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div id="chiste-texto">Cargando chiste...</div>
+  <div>
+    <button id="btn-prev">Anterior</button>
+    <button id="btn-next">Siguiente</button>
+  </div>
+</main>
+
+<script>
+  // Menú responsive
+  const menuBtn = document.getElementById('menu-btn');
+  const menu = document.getElementById('menu');
+  menuBtn.addEventListener('click', () => menu.classList.toggle('show'));
+
+  // Chistes
+  const chistes = [
+    "¿Por qué los pájaros no usan Facebook? Porque ya tienen Twitter.",
+    "¿Cuál es el animal más antiguo? La cebra, porque está en blanco y negro.",
+    "¿Qué le dijo una cebolla a otra? ¡Eres la única que me hace llorar!",
+    "¿Por qué las plantas odian las matemáticas? Porque les dan raíces cuadradas.",
+    "¿Qué le dijo un pez a otro pez? ¡Nada, nada!",
+    "¿Cuál es el colmo de un electricista? Que se le vaya la corriente.",
+    "¿Por qué el libro de matemáticas estaba triste? Porque tenía muchos problemas.",
+    "¿Qué hace una abeja en el gimnasio? ¡Zum-ba!",
+    "¿Por qué los esqueletos no pelean entre ellos? Porque no tienen agallas.",
+    "¿Qué le dijo un tomate a otro? ¡Nos vemos en la ensalada!"
+  ];
+  let index = 0;
+  const chisteTexto = document.getElementById('chiste-texto');
+
+  function mostrarChiste(i) {
+    chisteTexto.textContent = chistes[i];
+  }
+
+  document.getElementById('btn-prev').addEventListener('click', () => {
+    index = (index - 1 + chistes.length) % chistes.length;
+    mostrarChiste(index);
+  });
+
+  document.getElementById('btn-next').addEventListener('click', () => {
+    index = (index + 1) % chistes.length;
+    mostrarChiste(index);
+  });
+
+  mostrarChiste(index);
+</script>
+
 </body>
 </html>

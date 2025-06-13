@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Acerca De</title>
+<style>
+  body { font-family: Arial, sans-serif; margin:0; padding:0; }
+  nav {
+    background: #007bff; color: white; padding: 1rem; display: flex; justify-content: space-between; align-items: center;
+  }
+  nav .menu-btn {
+    display: none; font-size: 1.5rem; cursor: pointer;
+  }
+  nav ul {
+    list-style: none; margin:0; padding:0; display: flex; gap: 1rem;
+  }
+  nav ul li a {
+    color: white; text-decoration: none; font-weight: bold;
+  }
+  nav ul li a.active {
+    text-decoration: underline;
+  }
+  main {
+    padding: 2rem 1rem; max-width: 600px; margin: auto;
+  }
+  .redes a {
+    color: #007bff; text-decoration: none; font-weight: bold; margin-right: 1rem;
+  }
+  @media(max-width:600px) {
+    nav ul {
+      display: none; flex-direction: column; background: #007bff; position: absolute; top: 50px; right: 0; width: 150px;
+    }
+    nav ul.show {
+      display: flex;
+    }
+    nav .menu-btn {
+      display: block;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div>Chistes</div>
+  <div class="menu-btn" id="menu-btn">&#9776;</div>
+  <ul id="menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="acercaDe.html" class="active">Acerca De</a></li>
+  </ul>
+</nav>
+
+<main>
+  <h1>Acerca de mí</h1>
+  <p>Hola, soy Alejandro Martínez, estudiante en UADE. Creé esta web para el TP de Diseño Web para la UVA 4 - Despliegue.</p>
+  <p>Mi objetivo es aprender a hacer sitios web responsivos y fáciles de usar, que funcionen bien en celulares y computadoras.</p>
+  <div class="redes">
+    <a href="https://github.com/Alemartinez99" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://www.linkedin.com/in/alejandronmartinez/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="mailto:alecsmartinez5@email.com">Email</a>
+    <a href="https://alemartinez99.github.io/vvUVA2TP_OBLIGATORIO_EXAMEN/pages/sobremi.html">Portafolio personal</a>
+  </div>
+</main>
+
+<script>
+  // Menú responsive
+  const menuBtn = document.getElementById('menu-btn');
+  const menu = document.getElementById('menu');
+  menuBtn.addEventListener('click', () => menu.classList.toggle('show'));
+</script>
+
+</body>
+</html>
